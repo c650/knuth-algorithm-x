@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include <vector>
-#include <unordered_map>
 
 #include <algorithm>
 #include <limits>
@@ -12,7 +11,7 @@ typedef std::vector<matrix_row> incidence_matrix;
 /* implementing Knuth's Algorithm X */
 bool
 algo_x(const incidence_matrix& m, std::vector<bool> available_rows,
-	std::vector<bool> available_cols, std::vector<size_t> p_solution) {
+	std::vector<bool> available_cols, std::vector<size_t>& p_solution) {
 
 	if (available_rows.empty())
 		available_rows.resize(m.size(), true);
@@ -44,7 +43,7 @@ algo_x(const incidence_matrix& m, std::vector<bool> available_rows,
 	size_t col_w_min_ones,
 	       min_ones,
 	       ones_in_col,
-		   num_col;
+	       num_col;
 	num_col = m[0].size();
 	min_ones = std::numeric_limits<size_t>::max();
 	for (size_t i = 0; i < num_col; i++) {
